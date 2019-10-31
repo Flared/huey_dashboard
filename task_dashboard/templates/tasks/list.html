@@ -1,0 +1,8 @@
+{% extends 'layout.html' %}
+{% import 'macros.html' as macros %}
+
+{% block content %}
+  <h2 class="title is-2">Pendings</h2>
+  {{ macros.render_tasks(logs) }}
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <h2 class="title is-2">Task <span class="identifier">{{ last_log.task_name }}</span></h2>
+  <h6 class="subtitle is-6">{{ enqueued_log | repr_task }}</h6>
+  <div class="panel">
+    <p class="panel-heading">
+      Details
+    </p>
+    <div class="panel-block">
+      <dl>
+        <dt>Id</dt>
+        <dd>{{ last_log.task_id }}</dd>
+        <dt>Enqueued at</dt>
+        <dd>{{ enqueued_log.timestamp }}</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="panel">
+    <p class="panel-heading">
+      Data
+    </p>
+    <div class="panel-block">
+      <pre style="width: 100%">{{ logs | pprint }}</pre>
+    </div>
+  </div>
+{% endblock %}
+
+

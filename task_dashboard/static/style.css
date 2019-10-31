@@ -1,0 +1,21 @@
+.navbar.header {
+  border-bottom: 1px solid #eeeeee;
+}
+
+dt {
+  font-weight: bold;
+}
+
+.identifier {
+  font-family: monospace;
+}
+
+.subtitle.is-6 {
+  font-style: italic;
+  font-family: monospace;
+  color: #888;
+}
+
+.is-padding-small {
+  padding: 0.5rem 0.5rem
+}
