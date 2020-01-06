@@ -1,5 +1,5 @@
 from pydoc import locate
-from typing import Any, cast
+from typing import Any
 
 from task_logs.backends.backend import ReaderBackend
 
