@@ -1,26 +1,73 @@
 import os
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
+
+here = os.path.abspath(os.path.dirname(__file__))
 
 
-with open(os.path.join(os.path.dirname(__file__), "README.rst")) as fh:
-    readme = fh.read()
+def rel(*xs: str) -> str:
+    return os.path.join(here, *xs)
+
+
+with open(rel("README.md")) as f:
+    long_description = f.read()
+
+
+with open(rel("src", "task_dashboard", "__init__.py"), "r") as f:
+    version_marker = "__version__ = "
+    for line in f:
+        if line.startswith(version_marker):
+            _, version = line.split(version_marker)
+            version = version.strip().strip('"')
+            break
+    else:
+        raise RuntimeError("Version marker not found.")
+
+
+dependencies = [
+    "task-logs",
+]
+
+extra_dependencies = {}
+
+extra_dependencies["all"] = list(set(sum(extra_dependencies.values(), [])))
+extra_dependencies["dev"] = extra_dependencies["all"] + [
+    # Linting
+    "flake8",
+    "flake8-bugbear",
+    "flake8-quotes",
+    "isort",
+    "mypy",
+    "black",
+    # Testing
+    "pytest",
+    "pytest-cov",
+    # Docs
+    # "sphinx",
+    # "sphinx-autodoc-typehints",
+]
 
 setup(
     name="task-dashboard",
-    version=__import__("task_dashboard").__version__,
-    description="Task Dashboard",
-    long_description=readme,
-    author="Israël Hallé",
-    author_email="israel.halle@flare.systems",
-    url="http://github.com/Flared/task-dashboard/",
-    packages=find_packages(),
+    version=version,
+    author="Flare Systems Inc.",
+    author_email="oss@flare.systems",
+    description="Generic dashboard for task managers.",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/flared/task-dashboard",
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
+    include_package_data=True,
+    install_requires=dependencies,
+    python_requires=">=3.5",
+    extras_require=extra_dependencies,
+    zip_safe=False,
     classifiers=[
+        "Programming Language :: Python :: 3.7",
         "Development Status :: 4 - Beta",
         "Environment :: Web Environment",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
-        "Operating System :: OS Independent",
-        "Programming Language :: Python",
-        "Programming Language :: Python :: 3.7",
     ],
 )
