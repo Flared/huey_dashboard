@@ -1,5 +1,9 @@
 include pyproject.toml
 
+# Include flask files
+recursive-include src/task_dashboard/templates *
+recursive-include src/task_dashboard/static *
+
 # Include the README
 include *.md
 

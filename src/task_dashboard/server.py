@@ -36,7 +36,7 @@ def create_app(config: Optional[Dict[str, Any]] = None) -> Flask:
     register_template_helpers(app)
 
     if app.config["TASK_LOGS_FAKEDATA"]:
-        from .tests.fakedata import setup_fakedata
+        from .utils.fakedata import setup_fakedata
 
         setup_fakedata(app.task_logs_backend)
 

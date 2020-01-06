@@ -26,12 +26,13 @@ with open(rel("src", "task_dashboard", "__init__.py"), "r") as f:
 
 dependencies = [
     "task-logs",
+    "typing_extensions",
+    "flask>=1.1.0",
 ]
 
 extra_dependencies = {}
 
-extra_dependencies["all"] = list(set(sum(extra_dependencies.values(), [])))
-extra_dependencies["dev"] = extra_dependencies["all"] + [
+extra_dependencies["dev"] = dependencies + [
     # Linting
     "flake8",
     "flake8-bugbear",
