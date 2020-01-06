@@ -25,12 +25,17 @@ with open(rel("src", "task_dashboard", "__init__.py"), "r") as f:
 
 
 dependencies = [
-    "task-logs",
+    "task-logs @ git+https://github.com/Flared/task-logs.git@master#egg=task-logs",
     "typing_extensions",
     "flask>=1.1.0",
 ]
 
 extra_dependencies = {}
+
+extra_dependencies["test"] = dependencies + [
+    "pytest",
+    "pytest-cov",
+]
 
 extra_dependencies["dev"] = dependencies + [
     # Linting

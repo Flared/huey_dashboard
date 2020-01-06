@@ -1,7 +1,6 @@
 from typing import Optional
 
 from flask import Blueprint, abort, current_app, render_template
-
 from task_logs.backends.backend import EnqueuedLog
 
 bp = Blueprint("tasks", __name__, url_prefix="/tasks")
