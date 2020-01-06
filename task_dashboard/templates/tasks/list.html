@@ -1,8 +1,26 @@
 {% extends 'layout.html' %}
-{% import 'macros.html' as macros %}
 
 {% block content %}
-  <h2 class="title is-2">Pendings</h2>
-  {{ macros.render_tasks(logs) }}
+  <h2 class="title is-2">Tasks</h2>
+  <table class="table is-fullwidth is-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th class"is-1"><abbr title="Task Identifier">Id</abbr></th>
+        <th>Date</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for log in logs %}
+        <tr>
+          <td>{{ log.task_name }}</td>
+          <td><a href="{{ url_for('tasks.show', task_id=log.task_id) }}">{{ log.task_id }}</a></td>
+          <td>{{ log.timestamp }}</td>
+          <td>{{ log.type | titlize }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
 

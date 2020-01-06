@@ -1,5 +1,5 @@
 import abc
-from typing import List, Dict
+from typing import Any, Dict, List
 
 
 class BaseController(abc.ABC):
@@ -8,5 +8,11 @@ class BaseController(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def enqueue_task(self, name: str, args: List, kwargs: Dict, options: Dict) -> str:
+    def enqueue_task(
+        self,
+        name: str,
+        args: List[Any],
+        kwargs: Dict[str, Any],
+        options: Dict[str, Any],
+    ) -> str:
         raise NotImplementedError

@@ -18,6 +18,29 @@
   </div>
   <div class="panel">
     <p class="panel-heading">
+      Events
+    </p>
+    <div class="panel-block">
+      <table class="table is-fullwidth is-striped">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for log in logs %}
+            <tr>
+              <td>{{ log.type | titlize }}</td>
+              <td>{{ log.timestamp }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="panel">
+    <p class="panel-heading">
       Data
     </p>
     <div class="panel-block">

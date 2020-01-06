@@ -1,14 +1,17 @@
+from typing import Any, Dict, cast
+
 import flask
-from typing import Dict
 
 
 def titlize(value: str) -> str:
     return " ".join(map(str.capitalize, value.split(" ")))
 
 
-def repr_task(log: Dict) -> str:
+def repr_task(log: Dict[str, Any]) -> str:
+    if not log:
+        return "Task data missing!"
     if "task" not in log:
-        return log["task_name"]
+        return cast(str, log["task_name"])
     func = log["task"].get("task_path", log["task_name"])
     args = ", ".join(map(repr, log["task"]["args"]))
     kwargs = ", ".join(k + "=" + repr(v) for k, v in log["task"]["kwargs"].items())
