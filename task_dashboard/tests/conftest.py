@@ -1,9 +1,6 @@
 import pytest
 
 from task_dashboard.server import create_app
-from task_logs.backends import StubBackend
-
-from .fakedata import setup_fakedata
 
 
 @pytest.fixture

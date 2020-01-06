@@ -1,6 +1,5 @@
 from typing import Optional
 
-import flask
 from flask import Blueprint, abort, current_app, render_template
 
 from task_logs.backends.backend import EnqueuedLog

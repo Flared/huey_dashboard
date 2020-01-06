@@ -1,9 +1,7 @@
-import os
-import sys
 from typing import Any, Dict, Optional
 
 import werkzeug.wrappers
-from flask import Flask, current_app, redirect, render_template, url_for
+from flask import Flask, redirect, url_for
 
 from .helpers import register_template_helpers
 from .task_backends import load_task_logs_backend

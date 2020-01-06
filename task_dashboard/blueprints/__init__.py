@@ -1,1 +1,1 @@
-from .tasks import bp as tasks_bp
+from .tasks import bp as tasks_bp  # noqa
