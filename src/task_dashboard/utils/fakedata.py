@@ -1,7 +1,7 @@
 from task_logs import WriterBackend
 
 
-def setup_fakedata(backend: WriterBackend):
+def setup_fakedata(backend: WriterBackend) -> None:
     backend.write_enqueued(
         task_id="task-1",
         task_name="task1",

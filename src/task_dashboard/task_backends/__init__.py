@@ -15,4 +15,4 @@ def load_task_logs_backend(class_fqn: str, options: Any) -> ReaderBackend:
             f"{backend_cls} is not a ReaderBackend class"
         )  # pragma: no cover
 
-    return cast(ReaderBackend, backend_cls(**options))
+    return backend_cls(**options)
